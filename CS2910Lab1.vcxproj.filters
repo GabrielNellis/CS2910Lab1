@@ -18,5 +18,27 @@
     <ClCompile Include="CS2910Lab1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="students.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="courses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="courses.csv">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="grades.csv">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="students .csv">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="students.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -127,7 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="courses.cpp" />
     <ClCompile Include="CS2910Lab1.cpp" />
+    <ClCompile Include="students.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="courses.csv" />
+    <None Include="grades.csv" />
+    <None Include="students .csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="students.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
