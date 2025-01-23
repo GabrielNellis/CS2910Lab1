@@ -137,6 +137,7 @@
     <None Include="students .csv" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="courses.h" />
     <ClInclude Include="students.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
