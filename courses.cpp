@@ -75,10 +75,10 @@ void cSearch(string& s) {
 			string a = to_string(get<2>(e)); //this converts the int from the third variable of e into a string to be compared with the input
 			if (a == s) {
 				cout << "Course name: " << get<0>(e);
-				cout << " Semester offered: ";
+				cout << "\nSemester offered: ";
 				if (get<1>(e)) cout << "winter "; //prints out the course name and semester for specified courses
 				else cout << "fall ";
-				cout << "Course code: " << get<2>(e) << "\n";
+				cout << "\nCourse code: " << get<2>(e) << "\n";
 				found = true;
 				break;
 			}

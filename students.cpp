@@ -41,7 +41,7 @@ void sortR() {
 void checkStudNum() { //will run at the beginning of the program to check the number of students
 	studentNum = 1; //only need number for adding new students
 	fstream Students("students .csv");
-	string line; //don't need the line in this case, but have it here so the program won't break
+	string line; //to store the line obtained from the program
 	while (getline(Students, line)) {
 		char c;
 		bool isName = false;
