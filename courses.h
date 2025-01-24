@@ -8,3 +8,5 @@ void checkCourses(); //checks the courses and fills a vector at the start of the
 void sortS(bool); //sorts and prints the courses for the specified semester
 
 void cSearch(std::string &);
+
+void cCalculate(std::string&);

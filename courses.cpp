@@ -86,3 +86,38 @@ void cSearch(string& s) {
 	}
 	if (!found) cout << "Could not locate the specified course\n";
 }
+/*
+void cCalculate(string& s) {
+	bool found = false;
+	int courseID, semis = 0;
+	string line, grade = "";
+	if (isalpha(s[0])) { //if the first character is a letter
+		s[0] = toupper(s[0]); //making sure the first 2 characters are uppercase
+		s[1] = toupper(s[1]);
+		for (auto e : courseList) {
+			if (get<0>(e) == s) {
+				courseID = get<2>(e); //gradding the course ID to check the course
+				found = true;
+				break;
+			}
+		}
+	}
+	if (!found) cout << "Could not locate the specified course\n";
+	fstream Grades("grades.csv");
+	while (!Grades.eof()) {
+		getline(Grades, line);
+		char c;
+		for (int i = 0; i < line.length(); i++) {
+			if (semis == (courseID + 2)) {
+				if (c == 'n') break; //if the student is not taking the course
+				else grade.push_back(c);
+			}
+			if (c == ';') semis++;
+			if (semis > (courseID + 2)) break;
+		}
+		grade.pop_back(); //since there's an extra ; at the end that'd need to get erased
+		stoi(grade); //making it an int to make it easy to calculate
+
+	}
+}
+*/

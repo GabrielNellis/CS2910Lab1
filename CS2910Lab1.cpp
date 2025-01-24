@@ -45,11 +45,11 @@ int main() { //all this does is call functions in other files and print some tip
                 cout << "Are you looking for a student or course (or go back)?\n";
                 cin >> input;
                 for (int i = 0; i < input.length(); i++) input[i] = toupper(input[i]); //making the input non case-sensitive
-                if (input == "STUDENT") {
+                if (input == "STUDENT") { //warning, does not work properly (won't crash, just always fails)
                     validIn = true;
                     cout << "Please enter the student's last name or last 4 digits of their phone number\n";
                     cin >> input;
-                    sSearch(input);
+                    sNSearch(input);
                     break;
                 }
                 else if (input == "COURSE") {
@@ -63,12 +63,26 @@ int main() { //all this does is call functions in other files and print some tip
                 else cout << "This input is invalid, please try again\n";
             }
         }
+        /*
+        else if (input == "CALCGRADE") { //does not work
+            bool validIn = false;
+            while (!validIn) {
+                cout << "Which course would you like to calculate the grade for?\n"
+                    << "Feel free to go back for the list of courses\n";
+                cin >> input;
+                for (int i = 0; i < input.length(); i++) input[i] = toupper(input[i]); //making the input non case-sensitive
+                if (input == "BACK") break;
+                //else cCalculate(input);
+            }
+        }
+        */
         else if (input == "HELP") cout << "Slist - brings up a list of all students\n" //list of commands for the user to enter
             << "Alpha - brings up a list of all students in alphabetical order\n"
             << "Ralpha - brings up a list of all students in reverse alphabetical order\n"
             << "Clist - brings up a list of all courses\n"
             << "Cslist - brings up a list of all courses for the specified semester\n"
             << "Search - searches to find the specified student or course\n"
+            //<< "CalcGrade - calculates the average grade for the specified course\n"
             << "Exit - exits the program\n";
         else cout << "That is not a proper command. Please type a command or type help to see a list of commands\n";
     }

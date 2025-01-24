@@ -13,4 +13,4 @@ void checkStudNum(); //checks the number of students (since the program will als
 
 void updateSID(int &); //updates student information by looking up their id
 
-void sSearch(std::string &);
+void sNSearch(std::string &);

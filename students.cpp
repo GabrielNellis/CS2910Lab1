@@ -60,7 +60,10 @@ void checkStudNum() { //will run at the beginning of the program to check the nu
 		}
 		for (int i = 1; i < nameLen.length()-1; i++) { //cutting off the end commas
 			if (!(nameLen[i] == ';')) output.push_back(nameLen[i]);
-			else output.push_back(',');
+			else {
+				output.push_back(',');
+				output.push_back(' ');
+			}
 		}
 		STUDENT p;
 		p.first = output;
@@ -74,14 +77,53 @@ void checkStudNum() { //will run at the beginning of the program to check the nu
 void updateSID(int& a) {
 
 }
-void sSearch(string &s) {
+void sNumSearch(string& s) { //does not work (can't locate the student no matter what)
+	bool found = false;
+	fstream Students("students .csv");
+	string line, num = "";
+	int semis = 0;
+	while (!Students.eof()) {
+		getline(Students, line);
+		for (int i = 0; i < line.length(); i++) {
+			char c = line[i];
+			if (c == ';') semis++;
+			else if (semis == 3) num.push_back(c);
+			if (semis == 4) break;
+		}
+		semis = 0;
+		if (s == num) {
+			found = true;
+			break;
+		}
+	}
+	if (!found) cout << "Could not locate the specified student\n";
+	else {
+		//cout << "Student Name: ";
+		cout << "\nStudent Number: ";
+		semis = 0;
+		for (int i = 0; i < line.length(); i++) {
+			char c = line[i];
+			if (c == ';') semis++;
+			else if (semis == 3) cout << c;
+			else if (semis == 4) { //this being the last part with the email
+				semis++;
+				cout << "\nStudent Email: ";
+			}
+			if (semis >= 5) cout << c; //this should only happen during the part where it writes the email
+		}
+		cout << "\n";
+	}
+	Students.close();
+	return;
+}
+void sNSearch(string &s) {
 	bool found = false;
 	int studID;
 	if (isalpha(s[0])) { //is the student's last name
 		for (int i = 0; i < s.length(); i++) s[i] = tolower(s[i]); //making the rest of the name lowercase to not mess with the search
 		s[0] = toupper(s[0]); //making the first letter uppercase to not mess with the search
 		for (auto e : studList) {
-			if (s == e.first) {
+			if (s == e.first.substr(0, s.length())) {
 				studID = e.second;
 				found = true;
 				cout << "Student Name: " << e.first;
@@ -90,13 +132,7 @@ void sSearch(string &s) {
 		}
 	}
 	else { //is the student's phone number
-		for (auto e : studList) {
-			string a = to_string(e.second);
-			if (s == a) {
-				//found = true;
-				break;
-			}
-		}
+		sNumSearch(s);
 	}
 	if (!found) cout << "Could not locate the specified student\n";
 	else {
@@ -109,20 +145,21 @@ void sSearch(string &s) {
 			getline(Students, line);
 			string num = "";
 			for (int i = 0; i < line.length(); i++) { //checking the student ID
-				if (line[i] == ';') continue;
+				if (line[i] == ';') break;
 				else num.push_back(line[i]);
 			}
 			if (num == item) { //this being the student you're looking for
 				cout << "\nStudent Number: ";
+				semis = 0;
 				for (int i = 0; i < line.length(); i++) {
 					char c = line[i];
 					if (c == ';') semis++;
-					else if (semis == 3) output.push_back(c);
+					else if (semis == 3) cout << c;
 					else if (semis == 4) { //this being the last part with the email
 						semis++;
 						cout << "\nStudent Email: ";
 					}
-					else cout << c; //this should only happen during the part where it writes the email
+					if (semis>=5) cout << c; //this should only happen during the part where it writes the email
 				}
 				cout << "\n";
 				break;
